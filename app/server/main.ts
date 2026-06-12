@@ -1,12 +1,9 @@
 import { createTRPCRouter } from './trpc'
-import { greetingRouter as userRouter } from './routers/greeting'
-import { learnRouting } from './routers/learn'
-import { adminRouter } from './routers/admin'
-
+import { greetingRouter } from './routers/greeting'
+import { cloudflareTRPCAPI } from './routers/cf'
 export const appRouter = createTRPCRouter({
-    user: userRouter,
-    learn: learnRouting,
-    admin: adminRouter
+    user: greetingRouter,
+    cf: cloudflareTRPCAPI
 })
 
 export type AppRouter = typeof appRouter

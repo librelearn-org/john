@@ -8,24 +8,12 @@ export default [
 
     route("/app", "routes/app/layout.tsx", [
         route("", "routes/app/home.tsx"),
-
-        ...prefix("list", [
-            route(":listId", "routes/app/lists/viewer.tsx"),
-            route("new/:listId", "routes/app/lists/new.tsx"),
-            route("beta", "routes/app/lists/betaUiLinker.tsx"),
-        ]),
-        route("learn/:listId/:mode", "routes/app/learn.tsx"),
+        route("dns", "routes/app/dns.tsx"),
+        route("dns/:id", "routes/app/dns-edit.tsx")
     ]),
 
     ...prefix("auth", [
         route("login", "routes/auth/login.tsx"),
     ]),
-
-    route("/admin", "routes/admin/layout.tsx", [
-        route("", "routes/admin/index.tsx"),
-        route("test", "routes/admin/testing.tsx"),
-        route("users/:userId", "routes/admin/userview.tsx"),
-        route("users", "routes/admin/users.tsx"),
-    ]),
-    route("/nee", "routes/admin/nee.tsx"),
+    route("/nee", "routes/nee.tsx"),
 ] satisfies RouteConfig;

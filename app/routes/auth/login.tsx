@@ -6,6 +6,7 @@ import { Link, redirect, useNavigate, useSearchParams } from 'react-router'
 import { useEffect } from 'react'
 import { auth } from '~/utils/auth/server.server'
 import type { Route } from "./+types/login";
+import { Button } from '~/components/ui/button'
 
 export async function loader(loaderArgs: Route.LoaderArgs) {
   const headers = new Headers(loaderArgs.request.headers)
@@ -61,8 +62,8 @@ export default function SignIn() {
   }, [])
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center gap-4 bg-neutral-50 p-4 text-neutral-900 relative">
-      <button
+    <div className="min-h-screen flex flex-col items-center justify-center gap-4 p-4 text-neutral-900 relative">
+      <Button
         onClick={async () => {
           await authClient.signIn.social({
             provider: 'Hackclub',
@@ -70,10 +71,11 @@ export default function SignIn() {
             errorCallbackURL: '/auth/login',
           })
         }}
-        className="inline-flex h-11 items-center justify-center rounded-md border border-neutral-300 bg-white px-5 text-sm font-medium text-neutral-900 shadow-sm transition-colors hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:ring-offset-2"
+        size="lg"
+        variant="secondary"
       >
         {i18next.t('auth:loginHC')}
-      </button>
+      </Button>
     </div>
   )
 

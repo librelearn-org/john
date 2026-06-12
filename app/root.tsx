@@ -39,8 +39,8 @@ export async function loader() {
 
 export function meta({ }: Route.MetaArgs) {
   return [
-    { title: "App" },
-    { name: "description", content: "Private workspace." },
+    { title: "John manager" },
+    { name: "description", content: "Beheer shit." },
   ];
 }
 

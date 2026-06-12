@@ -13,6 +13,10 @@ export async function loader(loaderArgs: Route.LoaderArgs) {
     if (!user) {
         return redirect('/auth/login')
     }
+    if (user.role != "admin") {
+        // if no admin, bad
+        return redirect('/nee')
+    }
     const api = await caller(loaderArgs)
     try {
         await api.user.checkSession()

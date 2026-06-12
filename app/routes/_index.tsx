@@ -1,7 +1,8 @@
 import i18n from "i18next";
-import { Link, redirect } from "react-router";
+import { Link, redirect, useNavigate } from "react-router";
 import type { Route } from "./+types/_index";
 import { auth } from "~/utils/auth/server.server";
+import { Button } from "~/components/ui/button";
 
 export async function loader(loaderArgs: Route.LoaderArgs) {
     const headers = new Headers(loaderArgs.request.headers);
@@ -16,14 +17,18 @@ export async function loader(loaderArgs: Route.LoaderArgs) {
 }
 
 export default function Home() {
+    const nav = useNavigate()
     return (
-        <main className="flex min-h-screen items-center justify-center p-6">
-            <Link
-                to="/auth/login"
-                className="inline-flex h-11 items-center justify-center rounded-md border border-neutral-300 bg-white px-5 text-sm font-medium text-neutral-900 shadow-sm transition-colors hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:ring-offset-2"
+        <main className="flex flex-col min-h-screen items-center justify-center p-6">
+            <img src="https://www.pngplay.com/wp-content/uploads/1/Men-In-Suit-PNG-Background-Stock-Images.png" className="w-64"></img>
+            <h1 className="text-4xl font-bold mt-4">John Manager</h1>
+            <Button
+                onClick={() => { nav("/auth/login") }}
+                variant="secondary"
             >
                 {i18n.t("auth:login")}
-            </Link>
+            </Button>
+
         </main>
     );
 }
