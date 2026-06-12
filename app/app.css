@@ -1,0 +1,24 @@
+@import "tailwindcss";
+@config "../tailwind.config.ts";
+
+html,
+body {
+  font-family: "Geist", sans-serif;
+  @apply bg-neutral-950 text-neutral-50;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.light body {
+  @apply bg-neutral-950 text-neutral-50;
+}
+
+.dark body {
+  font-family: "Geist", sans-serif;
+  @apply bg-neutral-950 text-neutral-50;
+}
+
+.glow-shadow {
+  box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.28);
+}

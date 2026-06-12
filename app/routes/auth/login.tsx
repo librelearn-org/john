@@ -1,0 +1,80 @@
+import { authClient } from '~/utils/auth/client'
+import { KeyRound, LogIn, User } from 'lucide-react'
+import i18next from 'i18next'
+import zod from 'zod'
+import { Link, redirect, useNavigate, useSearchParams } from 'react-router'
+import { useEffect } from 'react'
+import { auth } from '~/utils/auth/server.server'
+import type { Route } from "./+types/login";
+
+export async function loader(loaderArgs: Route.LoaderArgs) {
+  const headers = new Headers(loaderArgs.request.headers)
+  const result = await auth.api.getSession({ headers })
+  const user = result?.user
+  if (user) {
+    return redirect('/app')
+  }
+}
+
+export function geti18nAuthMessageByCode(code: string) {
+  switch (code) {
+    case "USERNAME_IS_INVALID":
+      return i18next.t('auth:errors.usernameIsInvalid')
+    case "INVALID_EMAIL_OR_PASSWORD":
+      return i18next.t('auth:errors.invcreds')
+    case "INVALID_USERNAME_OR_PASSWORD":
+      return i18next.t('auth:errors.invcreds')
+    case "USERNAME_TOO_SHORT":
+      return i18next.t('auth:errors.UserShort')
+    case "PROVIDER_NOT_ENABLED":
+      return i18next.t('auth:errors.ProviderDisabled')
+    case "OAUTH_ERROR":
+      return i18next.t('auth:errors.AuthError')
+    case "PROVIDER_ERROR":
+      return i18next.t('auth:errors.AuthError')
+    case "OAUTH_EMAIL_MISSING":
+      return i18next.t('auth:errors.AuthError')
+    case "OAUTH_ACCOUNT_NOT_LINKED":
+      return i18next.t('auth:errors.noConnectedAccount')
+    case "ACCOUNT_DISABLED":
+      return i18next.t('auth:errors.AccountDisabled') // Is anders dan Bans, worden niet veel gebruikt
+    default:
+      return i18next.t('auth:errors.unknown')
+  }
+}
+
+export default function SignIn() {
+  const navigate = useNavigate()
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    switch (searchParams.get('error')) {
+      case 'signup_disabled':
+        alert(i18next.t('auth:errors.noConnectedAccount'))
+        navigate('/auth/login')
+        break;
+      case 'account_not_linked':
+        alert(i18next.t('auth:errors.noConnectedAccount'))
+        navigate('/auth/login')
+        break;
+    }
+  }, [])
+
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center gap-4 bg-neutral-50 p-4 text-neutral-900 relative">
+      <button
+        onClick={async () => {
+          await authClient.signIn.social({
+            provider: 'Hackclub',
+            callbackURL: '/app',
+            errorCallbackURL: '/auth/login',
+          })
+        }}
+        className="inline-flex h-11 items-center justify-center rounded-md border border-neutral-300 bg-white px-5 text-sm font-medium text-neutral-900 shadow-sm transition-colors hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-neutral-400 focus:ring-offset-2"
+      >
+        {i18next.t('auth:loginHC')}
+      </button>
+    </div>
+  )
+
+}

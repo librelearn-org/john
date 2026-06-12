@@ -1,0 +1,67 @@
+{
+  "welcome": "Welkom!",
+  "description": "Deze preview is nog niet compleet.",
+  "auth": {
+    "login": "Inloggen",
+    "logout": "Uitloggen",
+    "signup": "Registreren",
+    "signupMarketing": "Begin met leren!",
+    "loginHC": "Login met Hackclub auth.",
+    "noAccountSignUp": "Nog geen account?",
+    "username": "Gebruikersnaam",
+    "password": "Wachtwoord",
+    "email": "E-mail",
+    "forgotPassword": "Wachtwoord vergeten?",
+    "emailOrUsername": "E-mail of gebruikersnaam",
+    "signUpOk": "Je account is aangemaakt! Check je e-mail voor een bevestigingslink.",
+    "errors": {
+      "invcreds": "Ongeldige inloggegevens. Probeer het opnieuw.",
+      "unknown": "Er is een onbekende fout opgetreden. Probeer het later opnieuw.",
+      "UserShort": "De gebruikersnaam/e-mail is in een ongeldig formaat. Probeer een andere gebruikersnaam of e-mail.",
+      "noConnectedAccount": "Er is geen bestaand account verbonden met deze provider.",
+      "AccountDisabled": "Dit account is permanent gedeactiveerd door schending van onze gebruiksvoorwaarden. Neem contact op met support.",
+      "ProviderDisabled": "Deze inlogmethode is inactief. Probeer het met een andere inlogmethode.",
+      "OauthError": "Er is een probleem opgetreden bij het gebruik van OAuth2.1.",
+      "Ratelimit": "Woah! Rustig aan! Je bent te snel bezig. Probeer het over een paar seconden opnieuw."
+    }
+  },
+  "errors": {
+    "404": {
+      "title": "Pagina niet gevonden",
+      "message": "De opgevraagde pagina bestaat niet."
+    },
+    "500": {
+      "title": "Interne serverfout",
+      "message": "Er is een fout opgetreden aan onze kant. Probeer het later opnieuw."
+    },
+    "unknown": "Er is een onbekende fout opgetreden. Probeer het later opnieuw.",
+    "api": {
+      "unauthorized": "Je moet ingelogd zijn om verder te gaan.",
+      "forbidden": "Je hebt geen toestemming voor deze actie.",
+      "notFound": "Dit item kon niet worden gevonden.",
+      "badRequest": "Sommige invoer is ongeldig. Controleer je gegevens en probeer het opnieuw.",
+      "timeout": "De aanvraag duurde te lang. Probeer het opnieuw.",
+      "tooManyRequests": "Te veel aanvragen. Wacht even en probeer het opnieuw.",
+      "internal": "Er ging iets mis aan onze kant. Probeer het later opnieuw.",
+      "network": "Kan de server niet bereiken. Controleer je verbinding en probeer het opnieuw.",
+      "generic": "Er ging iets mis. Probeer het later opnieuw.",
+      "forumLoad": "Forumposts konden nu niet geladen worden.",
+      "reviewQueueLoad": "De moderatiequeue kon nu niet geladen worden.",
+      "createPost": "Je post kon niet aangemaakt worden. Probeer het opnieuw.",
+      "vote": "Je stem kon niet opgeslagen worden. Probeer het opnieuw.",
+      "reply": "Je reactie kon niet geplaatst worden. Probeer het opnieuw."
+    }
+  },
+  "icons": {
+    "nederlands": "Nederlands",
+    "engels": "Engels",
+    "frans": "Frans",
+    "duits": "Duits",
+    "latijn": "Latijn",
+    "grieks": "Grieks",
+    "spaans": "Spaans",
+    "wiskunde": "Wiskunde",
+    "natuurkunde": "Natuurkunde",
+    "scheikunde": "Scheikunde"
+  }
+}
